@@ -1,42 +1,31 @@
+# Streamlitライブラリをインポート
 import streamlit as st
-import pandas as pd
-import plotly.express as px # type: ignore
-import plotly.graph_objects as go # type: ignore
 
-# Webアプリケーションのタイトル
-st.title('科目別成績の可視化')
+# ページ設定（タブに表示されるタイトル、表示幅）
+st.set_page_config(page_title="タイトル", layout="wide")
 
-# ユーザーからの入力を取得
-subjects = ['国語', '数学', '英語', '理科', '社会']
-scores = []
+# タイトルを設定
+st.title('Streamlitのサンプルアプリ')
 
-for subject in subjects:
-    score = st.number_input(f'{subject}の点数', min_value=0, max_value=100, value=50, step=1)
-    scores.append(score)
+# テキスト入力ボックスを作成し、ユーザーからの入力を受け取る
+user_input = st.text_input('あなたの名前を入力してください')
 
-# データフレームの作成
-df = pd.DataFrame({'科目': subjects, '点数': scores})
+# ボタンを作成し、クリックされたらメッセージを表示
+if st.button('挨拶する'):
+    if user_input:  # 名前が入力されているかチェック
+        st.success(f'🌟 こんにちは、{user_input}さん! 🌟')  # メッセージをハイライト
+    else:
+        st.error('名前を入力してください。')  # エラーメッセージを表示
 
-# 棒グラフの作成
-fig_bar = px.bar(df, x='科目', y='点数', title='科目別の点数', labels={'点数': '点数', '科目': '科目'})
+# スライダーを作成し、値を選択
+number = st.slider('好きな数字（10進数）を選んでください', 0, 100)
 
-# レーダーチャートの作成
-fig_radar = go.Figure()
-fig_radar.add_trace(go.Scatterpolar(
-    r=scores,
-    theta=subjects,
-    fill='toself'
-))
-fig_radar.update_layout(
-    polar=dict(
-        radialaxis=dict(
-            visible=True,
-            range=[0, 100]
-        )),
-    showlegend=False,
-    title='科目別の点数'
-)
+# 補足メッセージ
+st.caption("十字キー（左右）でも調整できます。")
 
-# グラフの表示
-st.plotly_chart(fig_bar)
-st.plotly_chart(fig_radar)
+# 選択した数字を表示
+st.write(f'あなたが選んだ数字は「{number}」です。')
+
+# 選択した数値を2進数に変換
+binary_representation = bin(number)[2:]  # 'bin'関数で2進数に変換し、先頭の'0b'を取り除く
+st.info(f'🔢 10進数の「{number}」を2進数で表現すると「{binary_representation}」になります。 🔢')  # 2進数の表示をハイライト
