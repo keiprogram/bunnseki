@@ -4,7 +4,7 @@ import plotly.express as px # type: ignore
 import plotly.graph_objects as go # type: ignore
 
 # Webアプリケーションのタイトル
-st.title('科目別成績の可視化')
+st.title('テストデータぶんせき')
 
 # ユーザーからの入力を取得
 subjects = ['国語', '数学', '英語', '理科', '社会']
