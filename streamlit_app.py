@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+import plotly.express as px # type: ignore
+import plotly.graph_objects as go # type: ignore
 
 # Webアプリケーションのタイトル
 st.title('科目別成績の可視化')
