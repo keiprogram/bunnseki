@@ -11,7 +11,7 @@ subjects = ['国語', '数学', '英語', '理科', '社会']
 scores = []
 
 for subject in subjects:
-    score = st.number_input(f'{subject}の点数', min_value=0, max_value=100, value=50, step=1)
+    score = st.slider('{subject}の点数', 0, 100)
     scores.append(score)
 
 # データフレームの作成
