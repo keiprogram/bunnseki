@@ -7,7 +7,7 @@ import plotly.graph_objects as go # type: ignore
 st.title('テストデータぶんせき')
 
 # ユーザーからの入力を取得
-subjects = ['国語', '数学', '英語', '理科', '社会']
+subjects = ['現代の国語', '言語文化', '数１', '数A', 'C1','論表','物理基礎','生物基礎','歴史総合','家庭基礎','保健','データサイエンス','舞STEAMS']
 scores = []
 
 for subject in subjects:
